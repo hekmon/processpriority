@@ -1,5 +1,7 @@
 # Process Priority
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/hekmon/processpriority.svg)](https://pkg.go.dev/github.com/hekmon/processpriority)
+
 Easily get or set a process priority from a Golang program with transparent Linux/Windows support.
 
 Under the hood, it will uses pre-defined nice values for Linux and the priority classes for Windows.
