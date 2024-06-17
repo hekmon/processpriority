@@ -14,6 +14,10 @@ On Linux, a user can only decrease its priority (increase its nice value), not i
 
 To be able to increase it, the user must be root or have the `CAP_SYS_NICE` capability.
 
+### Windows
+
+On Windows, the real time priority can only be set as an administrator. If you try to set it as a normal user, you will won't get an error but your process will be set at `High` instead.
+
 ## Example
 
 ```golang
