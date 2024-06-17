@@ -25,19 +25,19 @@ func getOS(pid int) (priority ProcessPriority, rawPriority int, err error) {
 	}
 	switch rawPriority {
 	case WinPriorityIdle:
-		priority = PriorityIdle
+		priority = Idle
 	case WinPriorityBelowNormal:
-		priority = PriorityBelowNormal
+		priority = BelowNormal
 	case WinPriorityNormal:
-		priority = PriorityNormal
+		priority = Normal
 	case WinPriorityAboveNormal:
-		priority = PriorityAboveNormal
+		priority = AboveNormal
 	case WinPriorityHigh:
-		priority = PriorityHigh
+		priority = High
 	case WinPriorityRealTime:
-		priority = PriorityRealTime
+		priority = RealTime
 	default:
-		priority = PriorityCustom
+		priority = OSSpecific
 	}
 	return
 }
@@ -45,17 +45,17 @@ func getOS(pid int) (priority ProcessPriority, rawPriority int, err error) {
 func setOS(pid int, priority ProcessPriority) error {
 	var winPriority int
 	switch priority {
-	case PriorityIdle:
+	case Idle:
 		winPriority = WinPriorityIdle
-	case PriorityBelowNormal:
+	case BelowNormal:
 		winPriority = WinPriorityBelowNormal
-	case PriorityNormal:
+	case Normal:
 		winPriority = WinPriorityNormal
-	case PriorityAboveNormal:
+	case AboveNormal:
 		winPriority = WinPriorityAboveNormal
-	case PriorityHigh:
+	case High:
 		winPriority = WinPriorityHigh
-	case PriorityRealTime:
+	case RealTime:
 		winPriority = WinPriorityRealTime
 	default:
 		return fmt.Errorf("unknown universal priority: %d", priority)

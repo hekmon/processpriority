@@ -4,15 +4,37 @@ package processpriority
 type ProcessPriority int
 
 const (
-	// PriorityUnknown is only used on Get(), it indicates that the current level is not a universal one from this package.
-	PriorityCustom ProcessPriority = iota
-	PriorityIdle
-	PriorityBelowNormal
-	PriorityNormal
-	PriorityAboveNormal
-	PriorityHigh
-	PriorityRealTime
+	// PriorityOSSpecific is only used on Get(), it indicates that the current level is not a universal one from this package.
+	OSSpecific ProcessPriority = iota
+	Idle
+	BelowNormal
+	Normal
+	AboveNormal
+	High
+	RealTime
 )
+
+// String implements the fmt.Stringer interface
+func (pp ProcessPriority) String() string {
+	switch pp {
+	case OSSpecific:
+		return "OS Specific"
+	case Idle:
+		return "Idle"
+	case BelowNormal:
+		return "Below Normal"
+	case Normal:
+		return "Normal"
+	case AboveNormal:
+		return "Above Normal"
+	case High:
+		return "High"
+	case RealTime:
+		return "Real Time"
+	default:
+		return "<unknown>"
+	}
+}
 
 // Set is an universal wrapper for setting process priority.
 // It uses OS specific convertion and calls OS specific implementation.
